@@ -19,8 +19,7 @@
 #      $ docker run -d --privileged maru/systemd-dind
 #
 
-FROM fedora:28
-MAINTAINER marun@redhat.com
+FROM registry.access.redhat.com/ubi8/ubi
 
 # Fix 'WARNING: terminal is not fully functional' when TERM=dumb
 ENV TERM=xterm
@@ -66,7 +65,7 @@ RUN dnf -y update && dnf -y install\
  && dnf clean all
 
 RUN dnf config-manager --add-repo\
- https://download.docker.com/linux/fedora/docker-ce.repo
+ https://download.docker.com/linux/centos/docker-ce.repo
 
 RUN dnf -y install docker-ce\
  && dnf clean all
